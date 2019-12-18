@@ -1,0 +1,47 @@
+@import './_variables';
+
+/*Other Numbers */
+.other-numbers {
+    width: 442.5px;
+    position: relative;
+    left: 38px;
+    border: 1px solid $color1a;
+    margin: 2px 0;
+    display: flex;
+    justify-content: space-evenly;
+
+    @media(max-width: 992px) {
+        width: 334px;
+        font-size: .8rem;
+        left: 29px;
+    }
+
+    .form-check {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+
+        &:hover {
+            background: $color2a;
+        }
+
+        label {
+            cursor: pointer;
+            width: 100%;
+            border-right: 1px solid $color1a;
+            color: $color1;
+            font-weight: 700;
+        }
+
+        &:last-of-type label {
+            border: none;
+        }
+
+        input {
+            position: absolute !important;
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+}

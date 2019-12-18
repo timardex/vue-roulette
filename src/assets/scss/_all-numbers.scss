@@ -1,0 +1,121 @@
+@import './_variables';
+
+/* All Numbers */
+.all-numbers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .column-line {
+        position: absolute !important;
+        right: -37px;
+        font-size: 1rem;
+        width: 36px;
+        top: 0;
+
+        .form-check {
+            &:hover {
+                background: $color2a;
+            }
+        }
+
+        @media(max-width: 992px) {
+            right: -28px;
+            width: 28px;
+
+            span {
+                font-size: .8rem !important;
+            }
+        }
+    }
+
+    .form-check {
+        position: relative;
+        margin: 1px;
+        padding: 5px;
+        border: 1px solid $color1a;
+
+        label {
+            cursor: pointer;
+        }
+
+        input {
+            position: absolute !important;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .number-name {
+            width: 23px;
+            height: 23px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+            font-weight: 700;
+
+            @media(max-width: 992px) {
+                width: 14px;
+                height: 14px;
+                font-size: 1rem;
+            }
+        }
+    }
+
+    .columns {
+        display: flex;
+
+        .form-check {
+            &:hover {
+                label {
+                    background: $color2a;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+
+    .number-zero {
+        .form-check {
+            border: none !important;
+            margin: 2px;
+            position: relative;
+
+            &:before,
+            &:after {
+                content: '';
+                position: absolute;
+                background: $color1a;
+                width: 1px;
+                height: 211%;
+                left: 13px;
+
+                @media(max-width: 992px) {
+                    left: 11px;
+                    height: 216%;
+                }
+            }
+
+            &:before {
+                top: -45px;
+                transform: rotate(40deg);
+
+                @media(max-width: 992px) {
+                    top: -34px;
+                }
+            }
+
+            &:after {
+                bottom: -45px;
+                transform: rotate(-40deg);
+
+                @media(max-width: 992px) {
+                    bottom: -34px;
+                }
+            }
+        }
+    }
+
+}

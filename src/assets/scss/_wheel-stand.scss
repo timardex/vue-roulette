@@ -1,0 +1,191 @@
+@import './_variables';
+
+.wheel-stand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 200px;
+
+    @media(max-width: 768px) {
+        margin: 0 auto 1rem;
+    }
+
+    .r-wheel {
+        
+        width: $wheelSize;
+        height: $wheelSize;
+        border-radius: 50%;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .wheel-inner {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background: $tableColor2;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+
+            &:before, &:after {
+                content: '';
+                background: $tableColor1;
+                position: absolute;
+                z-index: 1;
+            }
+
+            &:before {
+                height: 5px;
+                width: 75%;
+            }
+
+            &:after {
+                width: 5px;
+                height: 75%;
+            }
+
+            .wheel-inner-center {
+                width: 20px;
+                height: 20px;
+                background: $tableColor1;
+                border-radius: 50%;
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &:before {
+                    content: '';
+                    width: 8px;
+                    height: 8px;
+                    background: $color2;
+                    position: absolute;
+                    z-index: 2;
+                    border-radius: 50%;
+                }
+            }
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: $wheelSize;
+            height: $wheelSize;
+            position: relative;
+            transform: scale(.9);
+
+            @for $i from $from through $to {
+                .number:nth-child(#{$i}) {
+                    transform:rotateZ($rotate*$i);
+                }
+            }
+
+            .number{
+                width: $pitWidth;
+                height: $wheelSize / 2;
+                display: inline-block;
+                text-align: center;
+                position: absolute;
+                top: 0;
+                left: calc(50% - 8px);
+                transform-origin: 50% 100%;
+                background-color: transparent;
+                border-left: $pitWidth solid transparent;
+                border-right: $pitWidth solid transparent;
+                border-top: $wheelSize / 2 solid $color5;
+                backface-visibility: hidden;
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    top: -70px;
+                    right: -2px;
+                    width: 5px;
+                    height: 5px;
+                    background: $color1;
+                    border-radius: 50%;
+                    display: none;
+                }
+                
+
+                .pit{
+                    color: $color1;
+                    width: $pitWidth;
+                    display: inline-block;
+                    font-size: 8px;
+                    transform: scale(1,1.8);
+                    position: absolute;
+                    top: -($wheelSize / 2 - 3px);
+                    left: -($pitWidth - 3px);
+                    backface-visibility: hidden;
+                }
+            }
+        }
+
+        &.rotate-right {
+            animation: 8s wheelRotateRight infinite linear;
+            -moz-animation: 8s wheelRotateRight infinite linear;
+            -webkit-animation: 8s wheelRotateRight infinite linear;
+        }
+
+        &.rotate-left {
+            animation: 8s wheelRotateLeft infinite linear;
+            -moz-animation: 8s wheelRotateLeft infinite linear;
+            -webkit-animation: 8s wheelRotateLeft infinite linear;
+        }
+    }
+
+    .r-ball {
+        position: absolute;
+        width: 125px;
+        height: 135px;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            background: $color1;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+        }
+
+        &.rotate-left {
+            animation: 3s ballRotateLeft infinite linear;
+            -moz-animation: 3s ballRotateLeft infinite linear;
+            -webkit-animation: 3s ballRotateLeft infinite linear;
+        }
+
+        &.rotate-right {
+            animation: 3s ballRotateRight infinite linear;
+            -moz-animation: 3s ballRotateRight infinite linear;
+            -webkit-animation: 3s ballRotateRight infinite linear;
+        }
+    }
+
+    .wheel-box {
+        width: 200px;
+        height: 200px;
+        border: 10px solid $tableColor1;
+        border-radius: 50%;
+        background: $tableColor1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .ball-track {
+            width: 180px;
+            height: 180px;
+            background: transparent;
+            border-radius: 50%;
+            border: 5px solid $tableColor2;
+        }
+    }
+}

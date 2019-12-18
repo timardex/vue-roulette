@@ -1,0 +1,63 @@
+$tableColor1: #2f2f2f;
+$tableColor2: #3f3f3f;
+$color1: #f1f1f1;
+$color1a: rgba(255,255,255,.1);
+$color2: #ffc107;
+$color2a: rgba(255,193,7,.2);
+$color3: green;
+$color4: red;
+$color5: black;
+$color6: #593222;
+$color7: #673d2c;
+
+$wheelSize: 175px;
+$pitWidth: 8px;
+$from: 1;
+$to: 37;
+$rotate:(360/$to)+0deg;
+
+/* wheel */
+@keyframes wheelRotateRight {
+    0% {
+        transform: rotate(0deg);
+        transform-origin: 50% 50%;
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes wheelRotateLeft {
+    0% {
+        transform: rotate(360deg);
+        transform-origin: 50% 50%;
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* Ball */
+@keyframes ballRotateLeft {
+    0% {
+        transform: rotate(360deg);
+        transform-origin: 50% 50%;
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes ballRotateRight {
+    0% {
+        transform: rotate(0deg);
+        transform-origin: 50% 50%;
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

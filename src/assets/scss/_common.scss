@@ -1,0 +1,171 @@
+@import './_variables';
+@import './assets/scss/_info-list';
+
+html, body {
+    height: 100%;
+    background-color: $tableColor1 !important;
+    color: $color1 !important;
+}
+
+.roulette-game {
+    margin: auto;
+
+    h1 {
+        margin: 2rem 0;
+    }
+
+    @media(max-width: 992px) {
+        max-width: 690px;
+    }
+
+    @media(max-width: 768px) {
+        max-width: 510px;
+    }
+
+    #rotate-device {
+        padding-top: 3rem;
+    }
+
+    .max-width {
+        max-width: 548px;
+        margin: auto;
+    }
+
+    .btn-box {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .btn-primary {
+        width: 49%;
+        margin: 2rem 0 0 0;
+        background-color: $tableColor2;
+        border-color: $tableColor2;
+
+        &:hover,
+        &:focus,
+        &.disabled,
+        &:disabled,
+        &:not(:disabled):not(.disabled).active,
+        &:not(:disabled):not(.disabled):active {
+            background-color: $color5;
+            border-color: $color5;
+            box-shadow: none !important;
+        }
+    }
+
+
+    .disabled {
+        pointer-events: none;
+    }
+
+
+    small {
+        display: block;
+    }
+
+    span {
+        &[data-id="0"] {
+            background: $color3;
+        }
+
+        &[data-id="1"],
+        &[data-id="3"],
+        &[data-id="5"],
+        &[data-id="7"],
+        &[data-id="9"],
+        &[data-id="12"],
+        &[data-id="14"],
+        &[data-id="16"],
+        &[data-id="18"],
+        &[data-id="19"],
+        &[data-id="21"],
+        &[data-id="23"],
+        &[data-id="25"],
+        &[data-id="27"],
+        &[data-id="30"],
+        &[data-id="32"],
+        &[data-id="34"],
+        &[data-id="36"] {
+            background: $color4;
+        }
+
+        &[data-id="2"],
+        &[data-id="4"],
+        &[data-id="6"],
+        &[data-id="8"],
+        &[data-id="10"],
+        &[data-id="11"],
+        &[data-id="13"],
+        &[data-id="15"],
+        &[data-id="17"],
+        &[data-id="20"],
+        &[data-id="22"],
+        &[data-id="24"],
+        &[data-id="26"],
+        &[data-id="28"],
+        &[data-id="29"],
+        &[data-id="31"],
+        &[data-id="33"],
+        &[data-id="35"] {
+            background: $color5;
+        }
+    }
+
+    .selected-numbers {
+        ul {
+            li {
+                padding: .5rem;
+                background-color: $tableColor2;
+                border: 1px solid rgba(0, 0, 0, .125);
+                border-radius: .25rem;
+                margin: .1rem !important;
+                font-weight: 700;
+                width: 24.4%;
+                font-size: .8em;
+                text-align: center;
+
+                @media(max-width: 768px) {
+                    width: 24.3%;
+                }
+
+            }
+        }
+
+        span {
+            font-size: 1rem;
+        }
+
+        p {
+            margin: 1rem 0;
+        }
+    }
+
+
+    .styled-number {
+        span {
+            color: $color1;
+            width: 30px;
+            height: 30px;
+            margin: 6px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .show {
+        display: block;
+    }
+}
+
+
+
+
+

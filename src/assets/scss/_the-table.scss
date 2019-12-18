@@ -1,0 +1,150 @@
+@import './_variables';
+@import './assets/scss/_other-numbers';
+@import './assets/scss/_wheel-stand';
+@import './assets/scss/_all-numbers';
+
+.the-table {
+    width: 100%;
+    background: $tableColor2;
+    padding: 25px 15px;
+    border-radius: .25rem;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    max-width: 768px;
+    margin: auto;
+    box-shadow: 0 8px 12px -10px rgba(0, 0, 0, 0.5);
+
+    @media(max-width: 768px) {
+        display: block;
+    }
+
+    .the-table-inner {
+        position: relative;
+        max-width: 481px;
+        margin: auto;
+
+        @media(max-width: 992px) {
+            max-width: 365px;
+
+        }
+
+        @media(max-width: 768px) {
+            left: -3%;
+        }
+
+        .no-more-bets-overlay {
+            position: absolute;
+            top: 0;
+            left: 38px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $color2;
+            font-weight: 700;
+            z-index: 1;
+            font-size: 2rem;
+            opacity: 0;
+            visibility: hidden;
+            text-shadow: 1px 1px 5px #000;
+
+            @media(max-width: 992px) {
+                left: 30px;
+            }
+
+            &.disabled {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+
+    .chip,
+    .dolly {
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+
+    .chip {
+        width: 17px;
+        height: 17px;
+        background-color: $color5;
+        border-radius: 50%;
+        border: 2px solid $color4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:before {
+            content: '';
+            width: 70%;
+            height: 70%;
+            border-radius: 50%;
+            background: $color4;
+        }
+
+        &:after {
+            content: '';
+            width: 40%;
+            height: 40%;
+            border-radius: 50%;
+            background: $color5;
+            position: absolute;
+        }
+
+        @media(max-width: 992px) {
+            width: 15px;
+            height: 15px;
+        }
+    }
+
+    .dolly {
+        top: -15px;
+        width: 10px !important;
+        height: 20px !important;
+        display: none;
+        background: $color2;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            width: 10px;
+            height: 10px;
+            background: $color2;
+            border-radius: 50%;
+        }
+    }
+
+    label[for="reds"] span {
+        color: $color4;
+    }
+    label[for="blacks"] span {
+        color: $color5;
+    }
+
+    label[for="1st"] span,
+    label[for="2nd"] span,
+    label[for="3rd"] span {
+        color: $color1;
+        transform: rotate(-90deg);
+        font-size: 1rem;
+    }
+
+    .winner-number {
+        &.number:before, .dolly {
+            display: block !important;
+        }
+    }
+}
