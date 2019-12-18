@@ -1,6 +1,6 @@
 <template>
     <div class="info-list" :class="[info_list ? 'active' : '']">
-        <span class="close-this chevron" :class="[info_list ? 'right' : 'left']"></span>
+        <span class="close-this chevron" :class="[info_list ? 'right' : 'left']" @click="closeList"></span>
         <div class="the-list">
             <List v-if="output_number !== null"/>
             <LastNumbers v-else/>
@@ -22,6 +22,11 @@ export default {
         },
         output_number() {
             return this.$store.state.initialState.output_number
+        }
+    },
+    methods: {
+        closeList: function() {
+            this.$store.dispatch('closeList')
         }
     }
 }

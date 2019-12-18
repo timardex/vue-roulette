@@ -6,7 +6,7 @@
             </span>
         </p>
         <ul class="list-inline">
-            <li v-for="(item, index) in number_checked" :key="index" class="list-inline-item">
+            <li v-for="(item, index) in outside_bets_names" :key="index" class="list-inline-item">
                 {{item}}
             </li>
         </ul>
