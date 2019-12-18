@@ -5,6 +5,7 @@
             <div id="content" class="d-none d-sm-block">
                 <TheTable />
                 <Footer />
+                <InfoList />
             </div>
         </b-container>
     </div>
@@ -14,11 +15,13 @@
 import Header from '@/components/Header'
 import TheTable from '@/components/TheTable'
 import Footer from '@/components/Footer'
+import InfoList from '@/components/InfoList'
 export default {
   components: {
     Header,
     TheTable,
-    Footer
+    Footer,
+    InfoList
   }
 }
 </script>
