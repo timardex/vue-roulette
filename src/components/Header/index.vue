@@ -1,11 +1,11 @@
 <template>
     <b-row>
         <b-col>
-            <header class="d-none d-sm-block">
+            <div class="d-none d-sm-block">
                 <h1 class="text-center">Roulette Presentation
                     <small>Try your luck!</small>
                 </h1>
-            </header>
+            </div>
 
             <RotateDevice />
         </b-col>
