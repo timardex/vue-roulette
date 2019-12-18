@@ -27,7 +27,6 @@ export default {
     methods: {
         getBets: function(element) {
             this.$store.dispatch('getNumberBets', element);
-            this.$store.state.initialState.chip_effect.play();
         }
     }
 }

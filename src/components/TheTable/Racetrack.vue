@@ -53,7 +53,6 @@ export default {
     methods: {
         getBets: function(element) {
             this.$store.dispatch('getOutsideBets', element);
-            this.$store.state.initialState.chip_effect.play();
         }
     }
 }

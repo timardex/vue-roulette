@@ -14,6 +14,8 @@ export default new Vuex.Store({
       state.initialState.info_list = !state.initialState.info_list
     },
     GET_NUMBER_BETS: (state, payload) => {
+      state.initialState.chip_effect.play();
+      
       state.initialState.number_zero = checkNumbers(state.initialState.number_zero, payload);
       state.initialState.number_first_column = checkNumbers(state.initialState.number_first_column, payload);
       state.initialState.number_second_column = checkNumbers(state.initialState.number_second_column, payload);
@@ -23,6 +25,7 @@ export default new Vuex.Store({
           state.initialState.number_checked.filter(item => item !== payload.numbers);
     },
     GET_OUTSIDE_BETS: (state, payload) => {
+      state.initialState.chip_effect.play();
       //Column
       state.initialState.column1_numbers = checkNumbers(state.initialState.column1_numbers, payload);
       state.initialState.column2_numbers = checkNumbers(state.initialState.column2_numbers, payload);
