@@ -2,7 +2,7 @@
     <div class="info-list" :class="[info_list ? 'active' : '']">
         <span class="close-this chevron" :class="[info_list ? 'right' : 'left']" @click="closeList"></span>
         <div class="the-list">
-            <List v-if="output_number !== null"/>
+            <List v-if="output_number"/>
             <LastNumbers v-else/>
         </div>
     </div>

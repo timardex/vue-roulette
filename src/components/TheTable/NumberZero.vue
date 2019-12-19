@@ -5,7 +5,7 @@
                 <input class="form-check-input" type="checkbox" :id="`${item.id}`" :value="`${item.id}`" @change="getBets(item)"/>
                 <span class="number-name" :style="`color: ${item.color}`">{{item.name}}</span>
                 <span v-if="item.checked" class="chip"></span>
-                <span className="dolly"></span>
+                <span class="dolly"></span>
             </label>
         </div>
     </div>

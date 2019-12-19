@@ -2,14 +2,19 @@
     <div class="text-center max-width btn-box">
         <button v-if="number_checked.length > 0 || outside_bets_names.length > 0" :class="`btn btn-primary ${disabled_btn}`" @click="removeBets">{{remove_bet_text}}</button>
         <button
-            :class="`btn btn-primary ${disabled_spin}`">
-            {{button_text}}
+            :class="`btn btn-primary ${disabled_spin}`"
+            @click="spinBall">
+            {{button_text}} <CountdownTimer v-if="show_timer"/>
         </button>
     </div>
 </template>
 
 <script>
+import CountdownTimer from '@/components/Footer/CountdownTimer'
 export default {
+    components: {
+        CountdownTimer
+    },
     computed: {
         remove_bet_btn() {
             return this.$store.state.initialState.remove_bet_btn
@@ -35,9 +40,6 @@ export default {
         outside_bets_names() {
             return this.$store.state.initialState.outside_bets_names
         },
-        ball_effect() {
-            return this.$store.state.initialState.ball_effect
-        },
         show_timer() {
             return this.$store.state.initialState.show_timer
         },
@@ -45,6 +47,17 @@ export default {
     methods: {
         removeBets: function() {
             this.$store.dispatch('removeBets');
+        },
+        spinBall: function() {
+            this.$store.dispatch('spinBall');
+
+            setTimeout(() => {
+                this.$store.dispatch('noMoreBets');
+            }, 10000);
+
+            setTimeout(() => {
+                this.$store.dispatch('gameResult');
+            }, 19500);
         }
     }
 }
