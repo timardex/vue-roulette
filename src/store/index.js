@@ -216,7 +216,7 @@ export default new Vuex.Store({
     getOutsideBets: (context, payload) => {
       context.commit('GET_OUTSIDE_BETS', payload)
     },
-    removeNumbers: (context) => {
+    removeBets: (context) => {
       context.commit('REMOVE_BETS')
     },
     spinBall: (context) => {

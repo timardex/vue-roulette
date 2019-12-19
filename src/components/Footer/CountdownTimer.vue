@@ -15,6 +15,9 @@ export default {
             this.countdown()
         }, 1000);
     },
+    beforeDestroy: function() {
+        clearInterval(this.timer);
+    },
     methods: {
         countdown: function() {
             if(this.seconds < 2) {
