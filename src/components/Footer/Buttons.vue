@@ -1,6 +1,6 @@
 <template>
     <div class="text-center max-width btn-box">
-        <button v-if="number_checked.length > 0 || outside_bets_names.length > 0" :class="`btn btn-primary ${disabled_btn}`">{{remove_bet_text}}</button>
+        <button v-if="number_checked.length > 0 || outside_bets_names.length > 0" :class="`btn btn-primary ${disabled_btn}`" @click="removeBets">{{remove_bet_text}}</button>
         <button
             :class="`btn btn-primary ${disabled_spin}`">
             {{button_text}}
@@ -41,6 +41,11 @@ export default {
         show_timer() {
             return this.$store.state.initialState.show_timer
         },
+    },
+    methods: {
+        removeBets: function() {
+            this.$store.dispatch('removeBets');
+        }
     }
 }
 </script>

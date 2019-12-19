@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import initialState from './initialState'
-import {checkNumbers, onlyUnique} from './helpers'
+import {checkNumbers, onlyUnique, removeBets} from './helpers'
 
 Vue.use(Vuex)
 
@@ -55,6 +55,40 @@ export default new Vuex.Store({
 
       state.initialState.outside_bets_names = payload.checked ? state.initialState.outside_bets_names.concat(payload.name) : 
           state.initialState.outside_bets_names.filter(item => !payload.name.includes(item));
+    },
+    REMOVE_BETS: (state) => {
+      state.initialState.number_zero = removeBets(state.initialState.number_zero);
+      state.initialState.number_first_column = removeBets(state.initialState.number_first_column);
+      state.initialState.number_second_column = removeBets(state.initialState.number_second_column);
+      state.initialState.number_third_column = removeBets(state.initialState.number_third_column);
+      //Column
+      state.initialState.column1_numbers = removeBets(state.initialState.column1_numbers);
+      state.initialState.column2_numbers = removeBets(state.initialState.column2_numbers);
+      state.initialState.column3_numbers = removeBets(state.initialState.column3_numbers);
+
+      //Dozen
+      state.initialState.dozen1_numbers = removeBets(state.initialState.dozen1_numbers);
+      state.initialState.dozen2_numbers = removeBets(state.initialState.dozen2_numbers);
+      state.initialState.dozen3_numbers = removeBets(state.initialState.dozen3_numbers);
+
+      //One 2 one
+      state.initialState.low_numbers = removeBets(state.initialState.low_numbers);
+      state.initialState.even_numbers = removeBets(state.initialState.even_numbers);
+      state.initialState.red_numbers = removeBets(state.initialState.red_numbers);
+      state.initialState.black_numbers = removeBets(state.initialState.black_numbers);
+      state.initialState.odd_numbers = removeBets(state.initialState.odd_numbers);
+      state.initialState.high_numbers = removeBets(state.initialState.high_numbers);
+
+      //Racetrack
+      state.initialState.cylinder_numbers = removeBets(state.initialState.cylinder_numbers);
+      state.initialState.orphelin_numbers = removeBets(state.initialState.orphelin_numbers);
+      state.initialState.voison_numbers = removeBets(state.initialState.voison_numbers);
+      state.initialState.jeu0_numbers = removeBets(state.initialState.jeu0_numbers);
+
+      state.initialState.outside_bets = [];
+      state.initialState.outside_bets_names = [];
+      state.initialState.number_checked = [];
+      state.initialState.remove_bet_btn = false;
     }
   },
   actions: {
@@ -66,6 +100,9 @@ export default new Vuex.Store({
     },
     getOutsideBets: (context, payload) => {
       context.commit('GET_OUTSIDE_BETS', payload)
+    },
+    removeBets: (context) => {
+      context.commit('REMOVE_BETS')
     }
   },
   
