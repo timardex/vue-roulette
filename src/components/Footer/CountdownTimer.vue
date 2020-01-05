@@ -8,16 +8,16 @@ export default {
         seconds: 10,
         timer: null
     }),
-    mounted: function() {
+    mounted () {
         this.timer = setInterval(() =>{
             this.countdown()
         }, 1000);
     },
-    beforeDestroy: function() {
+    beforeDestroy () {
         clearInterval(this.timer);
     },
     methods: {
-        countdown: function() {
+        countdown () {
             if(this.seconds < 2) {
                 this.seconds = null;
                 clearInterval(this.timer);

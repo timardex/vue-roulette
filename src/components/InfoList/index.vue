@@ -25,7 +25,7 @@ export default {
         ])
     },
     methods: {
-        closeList: function() {
+        closeList () {
             this.$store.dispatch('closeList')
         }
     }

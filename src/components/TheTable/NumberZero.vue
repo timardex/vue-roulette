@@ -22,7 +22,7 @@ export default {
         ])
     },
     methods: {
-        getBets: function(element) {
+        getBets (element) {
             this.$store.dispatch('getNumberBets', element);
         }
     }

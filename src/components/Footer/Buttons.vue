@@ -30,10 +30,10 @@ export default {
         ])
     },
     methods: {
-        removeBets: function() {
+        removeBets () {
             this.$store.dispatch('removeBets');
         },
-        spinBall: function() {
+        spinBall () {
             this.$store.dispatch('spinBall');
 
             setTimeout(() => {
