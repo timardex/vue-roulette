@@ -5,11 +5,12 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
     computed: {
-        disabled_btn() {
-            return this.$store.state.initialState.disabled_btn
-        },
+        ...mapState([
+            'disabled_btn'
+        ])
     }
 }
 </script>

@@ -14,14 +14,13 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
     computed: {
-        number_checked() {
-            return this.$store.state.initialState.number_checked
-        },
-        outside_bets_names() {
-            return this.$store.state.initialState.outside_bets_names
-        },
+        ...mapState([
+            'number_checked',
+            'outside_bets_names'
+        ])
     }
 }
 </script>

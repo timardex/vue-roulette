@@ -25,20 +25,15 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
     computed: {
-        column1_numbers() {
-            return this.$store.state.initialState.column1_numbers
-        },
-        column2_numbers() {
-            return this.$store.state.initialState.column2_numbers
-        },
-        column3_numbers() {
-            return this.$store.state.initialState.column3_numbers
-        },
-        disabled_btn() {
-            return this.$store.state.initialState.disabled_btn
-        }
+        ...mapState([
+            'column1_numbers',
+            'column2_numbers',
+            'column3_numbers',
+            'disabled_btn'
+        ])
     },
     methods: {
         getBets: function(element) {

@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 import List from '@/components/InfoList/List'
 import LastNumbers from '@/components/InfoList/LastNumbers'
 export default {
@@ -17,12 +19,10 @@ export default {
         LastNumbers
     },
     computed: {
-        info_list() {
-            return this.$store.state.initialState.info_list
-        },
-        output_number() {
-            return this.$store.state.initialState.output_number
-        }
+        ...mapState([
+            'info_list',
+            'output_number'
+        ])
     },
     methods: {
         closeList: function() {

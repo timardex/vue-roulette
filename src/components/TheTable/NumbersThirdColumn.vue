@@ -12,14 +12,13 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
     computed: {
-        number_third_column() {
-            return this.$store.state.initialState.number_third_column
-        },
-        disabled_btn() {
-            return this.$store.state.initialState.disabled_btn
-        }
+        ...mapState([
+            'number_third_column',
+            'disabled_btn'
+        ])
     },
     methods: {
         getBets: function(element) {

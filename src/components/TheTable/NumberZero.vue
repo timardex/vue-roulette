@@ -12,17 +12,14 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
     computed: {
-        number_zero() {
-            return this.$store.state.initialState.number_zero
-        },
-        disabled_btn() {
-            return this.$store.state.initialState.disabled_btn
-        },
-        chip_effect() {
-            return this.$store.state.initialState.chip_effect
-        }
+        ...mapState([
+            'number_zero',
+            'disabled_btn',
+            'chip_effect'
+        ])
     },
     methods: {
         getBets: function(element) {

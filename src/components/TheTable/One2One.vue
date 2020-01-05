@@ -46,29 +46,18 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
     computed: {
-        low_numbers() {
-            return this.$store.state.initialState.low_numbers
-        },
-        even_numbers() {
-            return this.$store.state.initialState.even_numbers
-        },
-        red_numbers() {
-            return this.$store.state.initialState.red_numbers
-        },
-        black_numbers() {
-            return this.$store.state.initialState.black_numbers
-        },
-        odd_numbers() {
-            return this.$store.state.initialState.odd_numbers
-        },
-        high_numbers() {
-            return this.$store.state.initialState.high_numbers
-        },
-        disabled_btn() {
-            return this.$store.state.initialState.disabled_btn
-        }
+        ...mapState([
+            'low_numbers',
+            'even_numbers',
+            'red_numbers',
+            'black_numbers',
+            'odd_numbers',
+            'high_numbers',
+            'disabled_btn'
+        ])
     },
     methods: {
         getBets: function(element) {

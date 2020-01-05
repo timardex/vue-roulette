@@ -26,32 +26,19 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
     computed: {
-        output_number() {
-            return this.$store.state.initialState.output_number
-        },
-        winning_with() {
-            return this.$store.state.initialState.winning_with
-        },
-        text_even_odd() {
-            return this.$store.state.initialState.text_even_odd
-        },
-        text_number_color() {
-            return this.$store.state.initialState.text_number_color
-        },
-        text_dozen() {
-            return this.$store.state.initialState.text_dozen
-        },
-        text_low_high() {
-            return this.$store.state.initialState.text_low_high
-        },
-        text_column() {
-            return this.$store.state.initialState.text_column
-        },
-        text_racetrack() {
-            return this.$store.state.initialState.text_racetrack
-        }
+        ...mapState([
+            'output_number',
+            'winning_with',
+            'text_even_odd',
+            'text_number_color',
+            'text_dozen',
+            'text_low_high',
+            'text_column',
+            'text_racetrack'
+        ])
     }
 }
 </script>

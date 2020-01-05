@@ -32,23 +32,16 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
     computed: {
-        cylinder_numbers() {
-            return this.$store.state.initialState.cylinder_numbers
-        },
-        orphelin_numbers() {
-            return this.$store.state.initialState.orphelin_numbers
-        },
-        voison_numbers() {
-            return this.$store.state.initialState.voison_numbers
-        },
-        jeu0_numbers() {
-            return this.$store.state.initialState.jeu0_numbers
-        },
-        disabled_btn() {
-            return this.$store.state.initialState.disabled_btn
-        }
+        ...mapState([
+            'cylinder_numbers',
+            'orphelin_numbers',
+            'voison_numbers',
+            'jeu0_numbers',
+            'disabled_btn',
+        ])
     },
     methods: {
         getBets: function(element) {

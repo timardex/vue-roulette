@@ -13,11 +13,12 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
     computed: {
-        last_numbers() {
-            return this.$store.state.initialState.last_numbers
-        },
+        ...mapState([
+            'last_numbers'
+        ])
     }
 }
 </script>
