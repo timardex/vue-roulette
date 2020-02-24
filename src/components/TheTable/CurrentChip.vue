@@ -1,7 +1,7 @@
 <template>
   <div class="current-chip-container">
     <div class="chip-amount">
-      <p class="current-chip" v-if="current_chip > 0">Your have <span>{{current_chip}}€</span></p>
+      <p class="current-chip" v-if="current_chip > 0">You have <span>{{current_chip}}€</span></p>
       <p class="current-chip" v-else>Your out of money!</p>
       <p class="chip-won" v-if="chip_ammount_won">You won: <span>{{chip_ammount_won}}€</span></p>
     </div>
