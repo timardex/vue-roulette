@@ -56,7 +56,7 @@ export default {
           color: red;
           font-size: 2rem;
           line-height: 1rem;
-          margin: 0 1rem;
+          margin: 0 0 0 1rem;
       }
     }
   }
