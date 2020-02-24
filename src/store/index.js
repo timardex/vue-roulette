@@ -1,7 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import state from './initialState'
-import {onlyUnique, removeNumbers, checkNumbers, getGameResult, winningWithOutsideBets, winningWithNumberBets} from './helpers'
+import {
+  onlyUnique,
+  removeNumbers,
+  checkNumbers,
+  getGameResult,
+  winningWithOutsideBets,
+  winningWithNumberBets,
+  previouseNumberBets,
+  previouseOutsideBets } from './helpers'
 
 Vue.use(Vuex)
 
@@ -208,6 +216,8 @@ export default new Vuex.Store({
       state.remove_bet_btn = false;
     },
     SPIN_BALL: (state) => {
+      window.localStorage.clear();
+
       let removeWinner = document.querySelectorAll('.form-check-label, .number');
       removeWinner.forEach(el => el.classList.remove('winner-number'));
 
@@ -227,9 +237,49 @@ export default new Vuex.Store({
       state.remove_bet_text = 'Bets accepted';
       state.disabled_btn = 'disabled';
       state.show_timer = false;
+
+      //Setting up localStorage
+      if (typeof(Storage) !== 'undefined') {
+        window.localStorage.setItem('number_checked', JSON.stringify(state.number_checked));
+        window.localStorage.setItem('outside_bets_names', JSON.stringify(state.outside_bets_names));
+      }
     },
     RESET_CHIPS: (state) => {
-      state.current_chip = 50
+      window.localStorage.clear();
+      state.current_chip = 20
+    },
+    PREV_BET: (state) => {
+      if ((localStorage.getItem('number_checked') && localStorage.getItem('outside_bets_names')) !== null) {
+        state.outside_bets_names = JSON.parse(window.localStorage.getItem('outside_bets_names'))
+        state.number_checked = JSON.parse(window.localStorage.getItem('number_checked'))
+
+        previouseNumberBets(state.number_checked, state.number_zero)
+        previouseNumberBets(state.number_checked, state.number_first_column)
+        previouseNumberBets(state.number_checked, state.number_second_column)
+        previouseNumberBets(state.number_checked, state.number_third_column)
+
+        previouseOutsideBets(state.outside_bets_names, state.column1_numbers)
+        previouseOutsideBets(state.outside_bets_names, state.column3_numbers)
+        previouseOutsideBets(state.outside_bets_names, state.column2_numbers)
+
+        previouseOutsideBets(state.outside_bets_names, state.dozen1_numbers)
+        previouseOutsideBets(state.outside_bets_names, state.dozen2_numbers)
+        previouseOutsideBets(state.outside_bets_names, state.dozen3_numbers)
+
+        previouseOutsideBets(state.outside_bets_names, state.low_numbers)
+        previouseOutsideBets(state.outside_bets_names, state.even_numbers)
+        previouseOutsideBets(state.outside_bets_names, state.red_numbers)
+        previouseOutsideBets(state.outside_bets_names, state.black_numbers)
+        previouseOutsideBets(state.outside_bets_names, state.odd_numbers)
+        previouseOutsideBets(state.outside_bets_names, state.high_numbers)
+
+        previouseOutsideBets(state.outside_bets_names, state.cylinder_numbers)
+        previouseOutsideBets(state.outside_bets_names, state.orphelin_numbers)
+        previouseOutsideBets(state.outside_bets_names, state.voison_numbers)
+        previouseOutsideBets(state.outside_bets_names, state.jeu0_numbers)
+
+        state.current_chip = state.current_chip - (state.number_checked.length + state.outside_bets_names.length)
+      }
     }
   },
   actions: {
@@ -256,6 +306,9 @@ export default new Vuex.Store({
     },
     resetChips: (context) => {
       context.commit('RESET_CHIPS')
+    },
+    prevBet: (context) => {
+      context.commit('PREV_BET')
     }
   },
   

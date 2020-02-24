@@ -23,7 +23,7 @@ const state = {
     number_checked: [],
     outside_bets: [],
     outside_bets_names: [],
-    current_chip: 50,
+    current_chip: 20,
     chip_ammount_won: null,
 
     number_zero: [
