@@ -14,7 +14,12 @@
     align-items: center;
     max-width: 768px;
     margin: auto;
+    pointer-events: all;
     box-shadow: 0 8px 12px -10px rgba(0, 0, 0, 0.5);
+
+    &.disable {
+        pointer-events: none;
+    }
 
     @media(max-width: 768px) {
         display: block;

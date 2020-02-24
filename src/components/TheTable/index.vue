@@ -1,7 +1,8 @@
 <template>
     <b-row>
         <b-col>
-            <div class="the-table">
+            <CurrentChip />
+            <div class="the-table" :class="{disable: current_chip <= 0}">
                 <WheelStand />
                 <div class="the-table-inner">
                     <NoMoreBets />
@@ -26,6 +27,9 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
+import CurrentChip from '@/components/TheTable/CurrentChip';
 import WheelStand from '@/components/TheTable/WheelStand';
 import NoMoreBets from '@/components/TheTable/NoMoreBets';
 import One2One from '@/components/TheTable/One2One';
@@ -39,6 +43,7 @@ import Racetrack from '@/components/TheTable/Racetrack';
 
 export default {
     components: {
+        CurrentChip,
         WheelStand,
         NoMoreBets,
         One2One,
@@ -49,6 +54,11 @@ export default {
         NumbersThirdColumn,
         Column,
         Racetrack
-    }
+    },
+    computed: {
+      ...mapState([
+          'current_chip'
+      ])
+  },
 }
 </script>

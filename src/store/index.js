@@ -102,13 +102,28 @@ export default new Vuex.Store({
       state.text_racetrack = _text_racetrack;
       state.outside_bets_names = _update_outsidebet_names;
       state.number_checked = state.number_checked.filter(item => item === _output_number); //keep just winning number
+
+      if (state.number_checked.length && !state.outside_bets_names.length) {
+        state.current_chip = state.current_chip+35
+        state.chip_ammount_won = 35
+      }
+
+      if (state.outside_bets_names.length && !state.number_checked.length) {
+        state.current_chip = state.current_chip+(state.outside_bets_names.length*10)
+        state.chip_ammount_won = state.outside_bets_names.length*10
+      }
+      
+      if (state.number_checked.length && state.outside_bets_names.length){
+        state.current_chip = (state.current_chip+35)+(state.outside_bets_names.length*10)
+        state.chip_ammount_won = (state.outside_bets_names.length*10)+35
+      }
+      
     },
     CLOSE_LIST: (state) => {
       state.info_list = !state.info_list
     },
     GET_NUMBER_BETS: (state, payload) => {
       state.chip_effect.play();
-      
       state.number_zero = checkNumbers(state.number_zero, payload);
       state.number_first_column = checkNumbers(state.number_first_column, payload);
       state.number_second_column = checkNumbers(state.number_second_column, payload);
@@ -116,6 +131,9 @@ export default new Vuex.Store({
 
       state.number_checked = payload.checked ? state.number_checked.concat(payload.numbers) : 
           state.number_checked.filter(item => item !== payload.numbers);
+      
+      // current chip
+      payload.checked ? state.current_chip = state.current_chip - 1 : state.current_chip = state.current_chip + 1
     },
     GET_OUTSIDE_BETS: (state, payload) => {
       state.chip_effect.play();
@@ -148,8 +166,14 @@ export default new Vuex.Store({
 
       state.outside_bets_names = payload.checked ? state.outside_bets_names.concat(payload.name) : 
           state.outside_bets_names.filter(item => !payload.name.includes(item));
+
+      // current chip
+      payload.checked ? state.current_chip = state.current_chip - 1 : state.current_chip = state.current_chip + 1
     },
     REMOVE_BETS: (state) => {
+      // current chip
+      state.current_chip = state.current_chip + state.number_checked.length + state.outside_bets_names.length;
+      state.chip_ammount_won = null;
       state.number_zero = removeNumbers(state.number_zero);
       state.number_first_column = removeNumbers(state.number_first_column);
       state.number_second_column = removeNumbers(state.number_second_column);
@@ -188,6 +212,7 @@ export default new Vuex.Store({
       removeWinner.forEach(el => el.classList.remove('winner-number'));
 
       state.ball_effect.play();
+      state.chip_ammount_won = null;
       state.spin_btn = !state.spin_btn;
       state.rotate_wheel = state.spin_btn ? 'rotate-right' : 'rotate-left',
       state.rotate_ball = state.spin_btn ? 'rotate-left show' : 'rotate-right show',
@@ -202,6 +227,9 @@ export default new Vuex.Store({
       state.remove_bet_text = 'Bets accepted';
       state.disabled_btn = 'disabled';
       state.show_timer = false;
+    },
+    RESET_CHIPS: (state) => {
+      state.current_chip = 50
     }
   },
   actions: {
@@ -225,6 +253,9 @@ export default new Vuex.Store({
     },
     gameResult: (context) => {
       context.commit('GAME_RESULT')
+    },
+    resetChips: (context) => {
+      context.commit('RESET_CHIPS')
     }
   },
   
