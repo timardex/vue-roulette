@@ -110,6 +110,7 @@ export default new Vuex.Store({
       state.text_racetrack = _text_racetrack;
       state.outside_bets_names = _update_outsidebet_names;
       state.number_checked = state.number_checked.filter(item => item === _output_number); //keep just winning number
+      state.show_prev_bet_btn = true
 
       if (state.number_checked.length && !state.outside_bets_names.length) {
         state.current_chip = state.current_chip+35
@@ -247,8 +248,11 @@ export default new Vuex.Store({
     RESET_CHIPS: (state) => {
       window.localStorage.clear();
       state.current_chip = 20
+      state.show_prev_bet_btn = false
     },
     PREV_BET: (state) => {
+      state.show_prev_bet_btn = false
+      
       if ((localStorage.getItem('number_checked') && localStorage.getItem('outside_bets_names')) !== null) {
         state.outside_bets_names = JSON.parse(window.localStorage.getItem('outside_bets_names'))
         state.number_checked = JSON.parse(window.localStorage.getItem('number_checked'))

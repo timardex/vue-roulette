@@ -1,7 +1,7 @@
 <template>
   <div class="current-chip-container">
     <div class="chip-amount">
-      <button class="btn btn-primary" @click="prevBet" v-if="output_number !== null && current_chip > 0">Previous bet</button>
+      <button class="btn btn-primary" @click="prevBet" v-if="output_number !== null && current_chip > 0 && show_prev_bet_btn">Previous bet</button>
       <p class="current-chip" v-if="current_chip > 0">You have <span>{{current_chip}}€</span></p>
       <p class="current-chip" v-else>Your out of money!</p>
       <p class="chip-won" v-if="chip_ammount_won">You won: <span>{{chip_ammount_won}}€</span></p>
@@ -21,6 +21,7 @@ export default {
           'current_chip',
           'chip_ammount_won',
           'output_number',
+          'show_prev_bet_btn'
       ])
   },
   methods: {

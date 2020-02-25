@@ -25,6 +25,7 @@ const state = {
     outside_bets_names: [],
     current_chip: 20,
     chip_ammount_won: null,
+    show_prev_bet_btn:  true,
 
     number_zero: [
         {
