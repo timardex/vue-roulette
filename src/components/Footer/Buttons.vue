@@ -40,11 +40,11 @@ export default {
 
             setTimeout(() => {
                 this.$store.dispatch('noMoreBets');
-            }, 100);
+            }, 10000);
 
             setTimeout(() => {
                 this.$store.dispatch('gameResult');
-            }, 195);
+            }, 13000);
         }
     }
 }
