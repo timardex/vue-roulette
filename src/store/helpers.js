@@ -51,21 +51,9 @@ export const winningWithNumberBets = (element, stateNumberChecked, outputNum) =>
 }
 
 export const previouseNumberBets = (number_checked, column_number) => {
-  for(let a = 0; a < number_checked.length; a++) {
-    for(let b = 0; b < column_number.length; b++) {
-      if(number_checked[a] === column_number[b].numbers) {
-        column_number[b].checked = true
-      }
-    }
-  }
+  return column_number.map(value => number_checked.includes(value.numbers) ? {...value, checked: true} : value)
 }
 
 export const previouseOutsideBets = (number_checked, column_number) => {
-  for(let a = 0; a < number_checked.length; a++) {
-    for(let b = 0; b < column_number.length; b++) {
-      if(number_checked[a] === column_number[b].name) {
-        column_number[b].checked = true
-      }
-    }
-  }
+  return column_number.map(value => number_checked.includes(value.name) ? {...value, checked: true} : value)
 }
