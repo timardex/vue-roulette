@@ -2,11 +2,6 @@
 node_modules
 /dist
 
-/.firebase
-.firebaserc
-firebase-debug.log
-firebase.json
-
 # local env files
 .env.local
 .env.*.local
